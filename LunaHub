@@ -1,4 +1,3 @@
-print("1")
 --[[
 
 ScriptX Interface Suite
@@ -11,7 +10,7 @@ JustHey (Nebula Softworks) | Configurations, Bug Fixing And More! | Co Developer
 Throit | Color Picker
 Wally | Dragging And Certain Functions
 Sirius | PCall Parsing, Notifications, Slider And Home Tab
-Luna Executor | Original UI
+ScriptX Executor | Original UI
 
 
 Extra Credits / Provided Certain Elements
@@ -26,7 +25,7 @@ Deity/dp4pv/x64x70 | Certain Scripting and Testing ig
 
 local Release = "Prerelease Beta 6.1"
 
-local Luna = { Folder = "Luna", Options = {}, ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(117, 164, 206)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(123, 201, 201)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(224, 138, 175))} }
+local ScriptX = { Folder = "ScriptX", Options = {}, ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(117, 164, 206)), ColorSequenceKeypoint.new(0.50, Color3.fromRGB(123, 201, 201)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(224, 138, 175))} }
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -1634,7 +1633,7 @@ local function BlurModule(Frame)
 	local MTREL = "Glass"
 	local binds = {}
 	local root = Instance.new('Folder', camera)
-	root.Name = 'LunaBlur'
+	root.Name = 'ScriptXBlur'
 
 	local gTokenMH = 99999999
 	local gToken = math.random(1, gTokenMH)
@@ -1837,7 +1836,7 @@ local function unpackt(array : table)
 end
 
 -- Interface Management
-local LunaUI = isStudio and script.Parent:WaitForChild("Luna UI") or game:GetObjects("rbxassetid://86467455075715")[1]
+local ScriptXUI = isStudio and script.Parent:WaitForChild("ScriptX UI") or game:GetObjects("rbxassetid://86467455075715")[1]
 
 local SizeBleh = nil
 
@@ -1846,7 +1845,7 @@ local function Hide(Window, bind, notif)
 	bind = string.split(tostring(bind), "Enum.KeyCode.")
 	bind = bind[2]
 	if notif then
-		Luna:Notification({Title = "Interface Hidden", Content = "The interface has been hidden, you may reopen the interface by Pressing the UI Bind In Settings ("..tostring(bind)..")", Icon = "visibility_off"})
+		ScriptX:Notification({Title = "Interface Hidden", Content = "The interface has been hidden, you may reopen the interface by Pressing the UI Bind In Settings ("..tostring(bind)..")", Icon = "visibility_off"})
 	end
 	tween(Window, {BackgroundTransparency = 1})
 	tween(Window.Elements, {BackgroundTransparency = 1})
@@ -1883,49 +1882,49 @@ end
 
 
 if gethui then
-	LunaUI.Parent = gethui()
+	ScriptXUI.Parent = gethui()
 elseif syn and syn.protect_gui then 
-	syn.protect_gui(LunaUI)
-	LunaUI.Parent = CoreGui
+	syn.protect_gui(ScriptXUI)
+	ScriptXUI.Parent = CoreGui
 elseif not isStudio and CoreGui:FindFirstChild("RobloxGui") then
-	LunaUI.Parent = CoreGui:FindFirstChild("RobloxGui")
+	ScriptXUI.Parent = CoreGui:FindFirstChild("RobloxGui")
 elseif not isStudio then
-	LunaUI.Parent = CoreGui
+	ScriptXUI.Parent = CoreGui
 end
 
 if gethui then
 	for _, Interface in ipairs(gethui():GetChildren()) do
-		if Interface.Name == LunaUI.Name and Interface ~= LunaUI then
+		if Interface.Name == ScriptXUI.Name and Interface ~= ScriptXUI then
 			Hide(Interface.SmartWindow)
 			Interface.Enabled = false
-			Interface.Name = "Luna-Old"
+			Interface.Name = "ScriptX-Old"
 		end
 	end
 elseif not isStudio then
 	for _, Interface in ipairs(CoreGui:GetChildren()) do
-		if Interface.Name == LunaUI.Name and Interface ~= LunaUI then
+		if Interface.Name == ScriptXUI.Name and Interface ~= ScriptXUI then
 			Hide(Interface.SmartWindow)
 			Interface.Enabled = false
-			Interface.Name = "Luna-Old"
+			Interface.Name = "ScriptX-Old"
 		end
 	end
 end
 
-LunaUI.Enabled = false
-LunaUI.SmartWindow.Visible = false
-LunaUI.Notifications.Template.Visible = false
-LunaUI.DisplayOrder = 1000000000
+ScriptXUI.Enabled = false
+ScriptXUI.SmartWindow.Visible = false
+ScriptXUI.Notifications.Template.Visible = false
+ScriptXUI.DisplayOrder = 1000000000
 
-local Main : Frame = LunaUI.SmartWindow
+local Main : Frame = ScriptXUI.SmartWindow
 local Dragger = Main.Drag
-local dragBar = LunaUI.Drag
+local dragBar = ScriptXUI.Drag
 local dragInteract = dragBar and dragBar.Interact or nil
 local dragBarCosmetic = dragBar and dragBar.Drag or nil
 local Elements = Main.Elements.Interactions
 local LoadingFrame = Main.LoadingFrame
 local Navigation = Main.Navigation
 local Tabs = Navigation.Tabs
-local Notifications = LunaUI.Notifications
+local Notifications = ScriptXUI.Notifications
 local KeySystem : Frame = Main.KeySystem
 
 -- local function LoadConfiguration(Configuration, autoload)
@@ -1934,7 +1933,7 @@ local KeySystem : Frame = Main.KeySystem
 -- 	local notified = false
 
 -- 	-- Iterate through current UI elements' flags
--- 	for FlagName, Flag in pairs(Luna.Flags) do
+-- 	for FlagName, Flag in pairs(ScriptX.Flags) do
 -- 		local FlagValue = Data[FlagName]
 
 -- 		if FlagValue then
@@ -1951,20 +1950,20 @@ local KeySystem : Frame = Main.KeySystem
 -- 			end)
 -- 		else
 -- 			notified = true
--- 			Luna:Notification({Title = "Config Error", Content = "Luna was unable to load or find '"..FlagName.. "'' in the current script. Check ".. website .." for help.", Icon = "flag"})
+-- 			ScriptX:Notification({Title = "Config Error", Content = "ScriptX was unable to load or find '"..FlagName.. "'' in the current script. Check ".. website .." for help.", Icon = "flag"})
 -- 		end
 -- 	end
 -- 	if autoload and notified == false then
--- 		Luna:Notification({
+-- 		ScriptX:Notification({
 -- 			Title = "Config Autoloaded",
--- 			Content = "The Configuration Has Been Automatically Loaded. Thank You For Using Luna Library",
+-- 			Content = "The Configuration Has Been Automatically Loaded. Thank You For Using ScriptX Library",
 -- 			Icon = "file-code-2",
 -- 			ImageSource = "Lucide"
 -- 		})
 -- 	elseif notified == false then
--- 		Luna:Notification({
+-- 		ScriptX:Notification({
 -- 			Title = "Config Loaded",
--- 			Content = "The Configuration Has Been Loaded. Thank You For Using Luna Library",
+-- 			Content = "The Configuration Has Been Loaded. Thank You For Using ScriptX Library",
 -- 			Icon = "file-code-2",
 -- 			ImageSource = "Lucide"
 -- 		})
@@ -1975,7 +1974,7 @@ local KeySystem : Frame = Main.KeySystem
 
 -- local function SaveConfiguration(Configuration, ConfigFolder, hasRoot)
 -- 	local Data = {}
--- 	for i,v in pairs(Luna.Flags) do
+-- 	for i,v in pairs(ScriptX.Flags) do
 -- 		if v.Type == "ColorPicker" then
 -- 			Data[i] = PackColor(v.Color)
 -- 		else
@@ -2080,7 +2079,7 @@ local function Draggable(Bar, Window, enableTaptic, tapticOffset)
 	end)
 end
 
-function Luna:Notification(data) -- action e.g open messages
+function ScriptX:Notification(data) -- action e.g open messages
 	task.spawn(function()
 		data = Kwargify({
 			Title = "Missing Title",
@@ -2220,10 +2219,10 @@ local function Minimize(Window)
 end
 
 
-function Luna:CreateWindow(WindowSettings)
+function ScriptX:CreateWindow(WindowSettings)
 
 	WindowSettings = Kwargify({
-		Name = "Luna UI Example Window",
+		Name = "ScriptX UI Example Window",
 		Subtitle = "",
 		LogoID = "6031097225",
 		LoadingEnabled = true,
@@ -2279,7 +2278,7 @@ function Luna:CreateWindow(WindowSettings)
 
 	LoadingFrame.Frame.Frame.Title.Text = WindowSettings.LoadingTitle
 	LoadingFrame.Frame.Frame.Subtitle.Text = WindowSettings.LoadingSubtitle
-	LoadingFrame.Version.Text = LoadingFrame.Frame.Frame.Title.Text == "ScriptX Interface Suite" and Release or "Luna UI"
+	LoadingFrame.Version.Text = LoadingFrame.Frame.Frame.Title.Text == "ScriptX Interface Suite" and Release or "ScriptX UI"
 
 	Navigation.Player.icon.ImageLabel.Image = Players:GetUserThumbnailAsync(Players.LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48)
 	Navigation.Player.Namez.Text = Players.LocalPlayer.DisplayName
@@ -2318,7 +2317,7 @@ function Luna:CreateWindow(WindowSettings)
 	-- 	LoadAutoLoad(WindowSettings.ConfigSettings.ConfigFolder, WindowSettings.ConfigSettings.RootFolder)
 	-- end)
 
-	LunaUI.Enabled = true
+	ScriptXUI.Enabled = true
 
 	BlurModule(Main)
 
@@ -2326,7 +2325,7 @@ function Luna:CreateWindow(WindowSettings)
 		local KeySettings = WindowSettings.KeySettings
 		
 		Draggable(Dragger, Main)
-		Draggable(LunaUI.MobileSupport, LunaUI.MobileSupport)
+		Draggable(ScriptXUI.MobileSupport, ScriptXUI.MobileSupport)
 		if dragBar then Draggable(dragInteract, Main, true, 255) end
 
 		if not WindowSettings.KeySettings then
@@ -2338,11 +2337,11 @@ function Luna:CreateWindow(WindowSettings)
 
 		if typeof(WindowSettings.KeySettings.Key) == "string" then WindowSettings.KeySettings.Key = {WindowSettings.KeySettings.Key} end
 
-		local direc = WindowSettings.KeySettings.SaveInRoot and "Luna/Configurations/" .. WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/" or "Luna/Configurations/" ..  WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/"
+		local direc = WindowSettings.KeySettings.SaveInRoot and "ScriptX/Configurations/" .. WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/" or "ScriptX/Configurations/" ..  WindowSettings.ConfigSettings.ConfigFolder .. "/Key System/"
 
-		if isfile and isfile(direc .. WindowSettings.KeySettings.FileName .. ".luna") then
+		if isfile and isfile(direc .. WindowSettings.KeySettings.FileName .. ".ScriptX") then
 			for i, Key in ipairs(WindowSettings.KeySettings.Key) do
-				if string.find(readfile(direc .. WindowSettings.KeySettings.FileName .. ".luna"), Key) then
+				if string.find(readfile(direc .. WindowSettings.KeySettings.FileName .. ".ScriptX"), Key) then
 					Passthrough = true
 					break
 				end
@@ -2426,9 +2425,9 @@ function Luna:CreateWindow(WindowSettings)
 					KeySystem.Visible = false
 					if WindowSettings.KeySettings.SaveKey then
 						if writefile then
-							writefile(direc .. WindowSettings.KeySettings.FileName .. ".luna", FoundKey)
+							writefile(direc .. WindowSettings.KeySettings.FileName .. ".ScriptX", FoundKey)
 						end
-						Luna:Notification({Title = "Key System", Content = "The key for this script has been saved successfully.", Icon = "lock_open"})
+						ScriptX:Notification({Title = "Key System", Content = "The key for this script has been saved successfully.", Icon = "lock_open"})
 					end
 				else
 					if AttemptsRemaining == 0 then
@@ -2445,7 +2444,7 @@ function Luna:CreateWindow(WindowSettings)
 
 			KeySystem.Close.MouseButton1Click:Connect(function()
 				
-				Luna:Destroy()
+				ScriptX:Destroy()
 			end)
 		end
 	end
@@ -2487,7 +2486,7 @@ function Luna:CreateWindow(WindowSettings)
 	LoadingFrame.Visible = false
 
 	Draggable(Dragger, Main)
-	Draggable(LunaUI.MobileSupport, LunaUI.MobileSupport)
+	Draggable(ScriptXUI.MobileSupport, ScriptXUI.MobileSupport)
 	if dragBar then Draggable(dragInteract, Main, true, 255) end
 
 	Elements.Template.LayoutOrder = 1000000000
@@ -3101,7 +3100,7 @@ function Luna:CreateWindow(WindowSettings)
 
 								SliderSettings.CurrentValue = NewValue
 								SliderV.CurrentValue = SliderSettings.CurrentValue
-								-- Luna.Flags[SliderSettings.Flag] = SliderSettings
+								-- ScriptX.Flags[SliderSettings.Flag] = SliderSettings
 							end
 						else
 							TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.1, Enum.EasingStyle.Back, Enum.EasingDirection.In, 0, false), {Size = UDim2.new(0, Location - Slider.Main.AbsolutePosition.X > 5 and Location - Slider.Main.AbsolutePosition.X or 5, 1, 0)}):Play()
@@ -3134,7 +3133,7 @@ function Luna:CreateWindow(WindowSettings)
 
 					SliderSettings.CurrentValue = NewVal
 					SliderV.CurrentValue = SliderSettings.CurrentValue
-					-- Luna.Flags[SliderSettings.Flag] = SliderSettings
+					-- ScriptX.Flags[SliderSettings.Flag] = SliderSettings
 
 				end
 
@@ -3169,7 +3168,7 @@ function Luna:CreateWindow(WindowSettings)
 
 					Set()
 
-					-- Luna.Flags[SliderSettings.Flag] = SliderSettings
+					-- ScriptX.Flags[SliderSettings.Flag] = SliderSettings
 				end
 
 				function SliderV:Destroy()
@@ -3178,12 +3177,12 @@ function Luna:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					Luna.Options[Flag] = SliderV
+					ScriptX.Options[Flag] = SliderV
 				end
 
-				LunaUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-					Slider.Main.color.Color = Luna.ThemeGradient
-					Slider.Main.UIStroke.color.Color = Luna.ThemeGradient
+				ScriptXUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+					Slider.Main.color.Color = ScriptX.ThemeGradient
+					Slider.Main.UIStroke.color.Color = ScriptX.ThemeGradient
 				end)
 
 				return SliderV
@@ -3354,13 +3353,13 @@ function Luna:CreateWindow(WindowSettings)
 					Toggle:Destroy()
 				end
 
-				LunaUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-					Toggle.toggle.color.Color = Luna.ThemeGradient
-					Toggle.toggle.UIStroke.color.Color = Luna.ThemeGradient
+				ScriptXUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+					Toggle.toggle.color.Color = ScriptX.ThemeGradient
+					Toggle.toggle.UIStroke.color.Color = ScriptX.ThemeGradient
 				end)
 
 				if Flag then
-					Luna.Options[Flag] = ToggleV
+					ScriptX.Options[Flag] = ToggleV
 				end
 
 				return ToggleV
@@ -3578,10 +3577,10 @@ function Luna:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					Luna.Options[Flag] = BindV
+					ScriptX.Options[Flag] = BindV
 				end
 
-				-- Luna.Flags[BindSettings.Flag] = BindSettings
+				-- ScriptX.Flags[BindSettings.Flag] = BindSettings
 
 				return BindV
 
@@ -3746,7 +3745,7 @@ function Luna:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					Luna.Options[Flag] = InputV
+					ScriptX.Options[Flag] = InputV
 				end
 
 
@@ -4088,7 +4087,7 @@ function Luna:CreateWindow(WindowSettings)
 					end
 					Dropdown.Selected.Text = ""
 
-					-- Luna.Flags[DropdownSettings.Flag] = DropdownSettings
+					-- ScriptX.Flags[DropdownSettings.Flag] = DropdownSettings
 
 				end
 
@@ -4098,10 +4097,10 @@ function Luna:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					Luna.Options[Flag] = DropdownV
+					ScriptX.Options[Flag] = DropdownV
 				end
 
-				-- Luna.Flags[DropdownSettings.Flag] = DropdownSettings
+				-- ScriptX.Flags[DropdownSettings.Flag] = DropdownSettings
 
 				return DropdownV
 
@@ -4347,7 +4346,7 @@ function Luna:CreateWindow(WindowSettings)
 				end
 
 				if Flag then
-					Luna.Options[Flag] = ColorPickerV
+					ScriptX.Options[Flag] = ColorPickerV
 				end
 
 				SafeCallback(ColorPickerSettings.Color)
@@ -4690,7 +4689,7 @@ function Luna:CreateWindow(WindowSettings)
 
 							SliderSettings.CurrentValue = NewValue
 							SliderV.CurrentValue = SliderSettings.CurrentValue
-							-- Luna.Flags[SliderSettings.Flag] = SliderSettings
+							-- ScriptX.Flags[SliderSettings.Flag] = SliderSettings
 						end
 					else
 						TweenService:Create(Slider.Main.Progress, TweenInfo.new(0.1, Enum.EasingStyle.Back, Enum.EasingDirection.In, 0, false), {Size = UDim2.new(0, Location - Slider.Main.AbsolutePosition.X > 5 and Location - Slider.Main.AbsolutePosition.X or 5, 1, 0)}):Play()
@@ -4723,7 +4722,7 @@ function Luna:CreateWindow(WindowSettings)
 
 				SliderSettings.CurrentValue = NewVal
 				SliderV.CurrentValue = SliderSettings.CurrentValue
-				-- Luna.Flags[SliderSettings.Flag] = SliderSettings
+				-- ScriptX.Flags[SliderSettings.Flag] = SliderSettings
 
 			end
 
@@ -4758,7 +4757,7 @@ function Luna:CreateWindow(WindowSettings)
 
 				Set()
 
-				-- Luna.Flags[SliderSettings.Flag] = SliderSettings
+				-- ScriptX.Flags[SliderSettings.Flag] = SliderSettings
 			end
 
 			function SliderV:Destroy()
@@ -4767,12 +4766,12 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				Luna.Options[Flag] = SliderV
+				ScriptX.Options[Flag] = SliderV
 			end
 
-			LunaUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-				Slider.Main.color.Color = Luna.ThemeGradient
-				Slider.Main.UIStroke.color.Color = Luna.ThemeGradient
+			ScriptXUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+				Slider.Main.color.Color = ScriptX.ThemeGradient
+				Slider.Main.UIStroke.color.Color = ScriptX.ThemeGradient
 			end)
 
 			return SliderV
@@ -4942,13 +4941,13 @@ function Luna:CreateWindow(WindowSettings)
 				Toggle:Destroy()
 			end
 
-			LunaUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
-				Toggle.toggle.color.Color = Luna.ThemeGradient
-				Toggle.toggle.UIStroke.color.Color = Luna.ThemeGradient
+			ScriptXUI.ThemeRemote:GetPropertyChangedSignal("Value"):Connect(function()
+				Toggle.toggle.color.Color = ScriptX.ThemeGradient
+				Toggle.toggle.UIStroke.color.Color = ScriptX.ThemeGradient
 			end)
 
 			if Flag then
-				Luna.Options[Flag] = ToggleV
+				ScriptX.Options[Flag] = ToggleV
 			end
 
 			return ToggleV
@@ -5165,10 +5164,10 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				Luna.Options[Flag] = BindV
+				ScriptX.Options[Flag] = BindV
 			end
 
-			-- Luna.Flags[BindSettings.Flag] = BindSettings
+			-- ScriptX.Flags[BindSettings.Flag] = BindSettings
 
 			return BindV
 
@@ -5353,7 +5352,7 @@ function Luna:CreateWindow(WindowSettings)
 				Bind.BindFrame.BindBox.Text = BindSettings.CurrentBind
 				Bind.BindFrame.BindBox.Size = UDim2.new(0, Bind.BindFrame.BindBox.TextBounds.X + 16, 0, 42)
 
-				-- Luna.Flags[BindSettings.Flag] = BindSettings
+				-- ScriptX.Flags[BindSettings.Flag] = BindSettings
 
 			end
 
@@ -5362,7 +5361,7 @@ function Luna:CreateWindow(WindowSettings)
 				Bind:Destroy()
 			end
 
-			-- Luna.Flags[BindSettings.Flag] = BindSettings
+			-- ScriptX.Flags[BindSettings.Flag] = BindSettings
 
 			return BindV
 
@@ -5526,7 +5525,7 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				Luna.Options[Flag] = InputV
+				ScriptX.Options[Flag] = InputV
 			end
 
 
@@ -5867,7 +5866,7 @@ function Luna:CreateWindow(WindowSettings)
 				end
 				Dropdown.Selected.Text = ""
 
-				-- Luna.Flags[DropdownSettings.Flag] = DropdownSettings
+				-- ScriptX.Flags[DropdownSettings.Flag] = DropdownSettings
 
 			end
 
@@ -5877,10 +5876,10 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				Luna.Options[Flag] = DropdownV
+				ScriptX.Options[Flag] = DropdownV
 			end
 
-			-- Luna.Flags[DropdownSettings.Flag] = DropdownSettings
+			-- ScriptX.Flags[DropdownSettings.Flag] = DropdownSettings
 
 			return DropdownV
 
@@ -6125,7 +6124,7 @@ function Luna:CreateWindow(WindowSettings)
 			end
 
 			if Flag then
-				Luna.Options[Flag] = ColorPickerV
+				ScriptX.Options[Flag] = ColorPickerV
 			end
 
 			SafeCallback(ColorPickerSettings.Color)
@@ -6172,7 +6171,7 @@ function Luna:CreateWindow(WindowSettings)
 				Description = "Create a config with all of your current settings.",
 				Callback = function()
 					if not inputPath or string.gsub(inputPath, " ", "") == "" then
-						Luna:Notification({
+						ScriptX:Notification({
 							Title = "Interface",
 							Icon = "warning",
 							ImageSource = "Material",
@@ -6181,9 +6180,9 @@ function Luna:CreateWindow(WindowSettings)
 						return
 					end
 
-					local success, returned = Luna:SaveConfig(inputPath)
+					local success, returned = ScriptX:SaveConfig(inputPath)
 					if not success then
-						Luna:Notification({
+						ScriptX:Notification({
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
@@ -6191,14 +6190,14 @@ function Luna:CreateWindow(WindowSettings)
 						})
 					end
 
-					Luna:Notification({
+					ScriptX:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
 						Content = string.format("Created config %q", inputPath),
 					})
 
-					configSelection:Set({ Options = Luna:RefreshConfigList() })
+					configSelection:Set({ Options = ScriptX:RefreshConfigList() })
 				end
 			})
 
@@ -6208,7 +6207,7 @@ function Luna:CreateWindow(WindowSettings)
 			configSelection = Tab:CreateDropdown({
 				Name = "Select Config",
 				Description = "Select a config to load your settings on.",
-				Options = Luna:RefreshConfigList(),
+				Options = ScriptX:RefreshConfigList(),
 				CurrentOption = {},
 				MultipleOptions = false,
 				SpecialType = nil,
@@ -6221,9 +6220,9 @@ function Luna:CreateWindow(WindowSettings)
 				Name = "Load Config",
 				Description = "Load your saved config settings.",
 				Callback = function()
-					local success, returned = Luna:LoadConfig(selectedConfig)
+					local success, returned = ScriptX:LoadConfig(selectedConfig)
 					if not success then
-						Luna:Notification({
+						ScriptX:Notification({
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
@@ -6232,7 +6231,7 @@ function Luna:CreateWindow(WindowSettings)
 						return
 					end
 
-					Luna:Notification({
+					ScriptX:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6245,9 +6244,9 @@ function Luna:CreateWindow(WindowSettings)
 				Name = "Overwrite Config",
 				Description = "Overwrite your current config settings.",
 				Callback = function()
-					local success, returned = Luna:SaveConfig(selectedConfig)
+					local success, returned = ScriptX:SaveConfig(selectedConfig)
 					if not success then
-						Luna:Notification({
+						ScriptX:Notification({
 							Title = "Interface",
 							Icon = "error",
 							ImageSource = "Material",
@@ -6256,7 +6255,7 @@ function Luna:CreateWindow(WindowSettings)
 						return
 					end
 
-					Luna:Notification({
+					ScriptX:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6269,7 +6268,7 @@ function Luna:CreateWindow(WindowSettings)
 				Name = "Refresh Config List",
 				Description = "Refresh the current config list.",
 				Callback = function()
-					configSelection:Set({ Options = Luna:RefreshConfigList() })
+					configSelection:Set({ Options = ScriptX:RefreshConfigList() })
 				end,
 			})
 
@@ -6279,10 +6278,10 @@ function Luna:CreateWindow(WindowSettings)
 				Description = "Set a config to auto load setting in your next session.",
 				Callback = function()
 					local name = selectedConfig
-					writefile(Luna.Folder .. "/settings/autoload.txt", name)
+					writefile(ScriptX.Folder .. "/settings/autoload.txt", name)
 					loadlabel:Set({ Text = "Current autoload config: " .. name })
 
-					Luna:Notification({
+					ScriptX:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6301,10 +6300,10 @@ function Luna:CreateWindow(WindowSettings)
 				Description = "Delete The Autoload File",
 				Callback = function()
 					local name = selectedConfig
-					delfile(Luna.Folder .. "/settings/autoload.txt")
+					delfile(ScriptX.Folder .. "/settings/autoload.txt")
 					loadlabel:Set({ Text = "None" })
 
-					Luna:Notification({
+					ScriptX:Notification({
 						Title = "Interface",
 						Icon = "info",
 						ImageSource = "Material",
@@ -6313,8 +6312,8 @@ function Luna:CreateWindow(WindowSettings)
 				end,
 			})
 
-			if isfile(Luna.Folder .. "/settings/autoload.txt") then
-				local name = readfile(Luna.Folder .. "/settings/autoload.txt")
+			if isfile(ScriptX.Folder .. "/settings/autoload.txt") then
+				local name = readfile(ScriptX.Folder .. "/settings/autoload.txt")
 				loadlabel:Set( { Text = "Current autoload config: " .. name })
 			end     
 		end
@@ -6329,8 +6328,8 @@ function Luna:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if Luna.Options[Flag] then
-						Luna.Options[Flag]:Set({ CurrentValue = data.state })
+					if ScriptX.Options[Flag] then
+						ScriptX.Options[Flag]:Set({ CurrentValue = data.state })
 					end
 				end
 			},
@@ -6343,8 +6342,8 @@ function Luna:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if Luna.Options[Flag] and data.value then
-						Luna.Options[Flag]:Set({ CurrentValue = data.value })
+					if ScriptX.Options[Flag] and data.value then
+						ScriptX.Options[Flag]:Set({ CurrentValue = data.value })
 					end
 				end
 			},
@@ -6357,8 +6356,8 @@ function Luna:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if Luna.Options[Flag] and data.text and type(data.text) == "string" then
-						Luna.Options[Flag]:Set({ CurrentValue = data.text })
+					if ScriptX.Options[Flag] and data.text and type(data.text) == "string" then
+						ScriptX.Options[Flag]:Set({ CurrentValue = data.text })
 					end
 				end
 			},
@@ -6371,8 +6370,8 @@ function Luna:CreateWindow(WindowSettings)
 					}
 				end,
 				Load = function(Flag, data)
-					if Luna.Options[Flag] and data.value then
-						Luna.Options[Flag]:Set({ CurrentOption = data.value })
+					if ScriptX.Options[Flag] and data.value then
+						ScriptX.Options[Flag]:Set({ CurrentOption = data.value })
 					end
 				end
 			},
@@ -6398,8 +6397,8 @@ function Luna:CreateWindow(WindowSettings)
 						return Color3.new(r, g, b)
 					end
 
-					if Luna.Options[Flag] and data.color then
-						Luna.Options[Flag]:Set({Color = HexToColor3(data.color)})
+					if ScriptX.Options[Flag] and data.color then
+						ScriptX.Options[Flag]:Set({Color = HexToColor3(data.color)})
 					end
 				end
 			}
@@ -6420,25 +6419,25 @@ function Luna:CreateWindow(WindowSettings)
 			local c1cp = Tab:CreateColorPicker({
 				Name = "Color 1",
 				Color = Color3.fromRGB(117, 164, 206),
-			}, "LunaInterfaceSuitePrebuiltCPC1") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+			}, "ScriptXInterfaceSuitePrebuiltCPC1") -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
 
 			local c2cp = Tab:CreateColorPicker({
 				Name = "Color 2",
 				Color = Color3.fromRGB(123, 201, 201),
-			}, "LunaInterfaceSuitePrebuiltCPC2")
+			}, "ScriptXInterfaceSuitePrebuiltCPC2")
 
 			local c3cp = Tab:CreateColorPicker({
 				Name = "Color 3",
 				Color = Color3.fromRGB(224, 138, 184),
-			}, "LunaInterfaceSuitePrebuiltCPC3") 
+			}, "ScriptXInterfaceSuitePrebuiltCPC3") 
 
 			task.wait(1)
 
 			c1cp:Set({
 				Callback = function(Value)
 					if c2cp and c3cp then
-						Luna.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
-						LunaUI.ThemeRemote.Value = not LunaUI.ThemeRemote.Value
+						ScriptX.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
+						ScriptXUI.ThemeRemote.Value = not ScriptXUI.ThemeRemote.Value
 					end
 				end
 			})
@@ -6446,8 +6445,8 @@ function Luna:CreateWindow(WindowSettings)
 			c2cp:Set({
 				Callback = function(Value)
 					if c1cp and c3cp then
-						Luna.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
-						LunaUI.ThemeRemote.Value = not LunaUI.ThemeRemote.Value
+						ScriptX.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, Value or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, c3cp.Color or Color3.fromRGB(255,255,255))}
+						ScriptXUI.ThemeRemote.Value = not ScriptXUI.ThemeRemote.Value
 					end
 				end
 			})
@@ -6455,8 +6454,8 @@ function Luna:CreateWindow(WindowSettings)
 			c3cp:Set({
 				Callback = function(Valuex)
 					if c2cp and c1cp then
-						Luna.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, Valuex or Color3.fromRGB(255,255,255))}
-						LunaUI.ThemeRemote.Value = not LunaUI.ThemeRemote.Value
+						ScriptX.ThemeGradient = ColorSequence.new{ColorSequenceKeypoint.new(0.00, c1cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(0.50, c2cp.Color or Color3.fromRGB(255,255,255)), ColorSequenceKeypoint.new(1.00, Valuex or Color3.fromRGB(255,255,255))}
+						ScriptXUI.ThemeRemote.Value = not ScriptXUI.ThemeRemote.Value
 					end
 				end
 			})
@@ -6480,8 +6479,8 @@ function Luna:CreateWindow(WindowSettings)
 		local function BuildFolderTree()
 			if isStudio then return "Config system unavailable." end
 			local paths = {
-				Luna.Folder,
-				Luna.Folder .. "/settings"
+				ScriptX.Folder,
+				ScriptX.Folder .. "/settings"
 			}
 
 			for i = 1, #paths do
@@ -6497,9 +6496,9 @@ function Luna:CreateWindow(WindowSettings)
 			if isStudio then return "Config system unavailable." end
 
 			if WindowSettings.ConfigSettings.RootFolder ~= nil and WindowSettings.ConfigSettings.RootFolder ~= "" then
-				Luna.Folder = WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder
+				ScriptX.Folder = WindowSettings.ConfigSettings.RootFolder .. "/" .. WindowSettings.ConfigSettings.ConfigFolder
 			else
-				Luna.Folder = WindowSettings.ConfigSettings.ConfigFolder
+				ScriptX.Folder = WindowSettings.ConfigSettings.ConfigFolder
 			end
 
 			BuildFolderTree()
@@ -6507,20 +6506,20 @@ function Luna:CreateWindow(WindowSettings)
 
 		SetFolder()
 
-		function Luna:SaveConfig(Path)
+		function ScriptX:SaveConfig(Path)
 			if isStudio then return "Config system unavailable." end
 
 			if (not Path) then
 				return false, "Please select a config file."
 			end
 
-			local fullPath = Luna.Folder .. "/settings/" .. Path .. ".luna"
+			local fullPath = ScriptX.Folder .. "/settings/" .. Path .. ".ScriptX"
 
 			local data = {
 				objects = {}
 			}
 
-			for flag, option in next, Luna.Options do
+			for flag, option in next, ScriptX.Options do
 				if not ClassParser[option.Class] then continue end
 				if option.IgnoreConfig then continue end
 
@@ -6536,14 +6535,14 @@ function Luna:CreateWindow(WindowSettings)
 			return true
 		end
 
-		function Luna:LoadConfig(Path)
+		function ScriptX:LoadConfig(Path)
 			if isStudio then return "Config system unavailable." end
 
 			if (not Path) then
 				return false, "Please select a config file."
 			end
 
-			local file = Luna.Folder .. "/settings/" .. Path .. ".luna"
+			local file = ScriptX.Folder .. "/settings/" .. Path .. ".ScriptX"
 			if not isfile(file) then return false, "Invalid file" end
 
 			local success, decoded = pcall(HttpService.JSONDecode, HttpService, readfile(file))
@@ -6560,16 +6559,16 @@ function Luna:CreateWindow(WindowSettings)
 			return true
 		end
 
-		function Luna:LoadAutoloadConfig()
-			if isfile(Luna.Folder .. "/settings/autoload.txt") then
+		function ScriptX:LoadAutoloadConfig()
+			if isfile(ScriptX.Folder .. "/settings/autoload.txt") then
 
 				if isStudio then return "Config system unavailable." end
 
-				local name = readfile(Luna.Folder .. "/settings/autoload.txt")
+				local name = readfile(ScriptX.Folder .. "/settings/autoload.txt")
 
-				local success, err = Luna:LoadConfig(name)
+				local success, err = ScriptX:LoadConfig(name)
 				if not success then
-					return Luna:Notification({
+					return ScriptX:Notification({
 						Title = "Interface",
 						Icon = "sparkle",
 						ImageSource = "Material",
@@ -6577,7 +6576,7 @@ function Luna:CreateWindow(WindowSettings)
 					})
 				end
 
-				Luna:Notification({
+				ScriptX:Notification({
 					Title = "Interface",
 					Icon = "sparkle",
 					ImageSource = "Material",
@@ -6587,16 +6586,16 @@ function Luna:CreateWindow(WindowSettings)
 			end 
 		end
 
-		function Luna:RefreshConfigList()
+		function ScriptX:RefreshConfigList()
 			if isStudio then return "Config system unavailable." end
 
-			local list = listfiles(Luna.Folder .. "/settings")
+			local list = listfiles(ScriptX.Folder .. "/settings")
 
 			local out = {}
 			for i = 1, #list do
 				local file = list[i]
-				if file:sub(-5) == ".luna" then
-					local pos = file:find(".luna", 1, true)
+				if file:sub(-5) == ".ScriptX" then
+					local pos = file:find(".ScriptX", 1, true)
 					local start = pos
 
 					local char = file:sub(pos, pos)
@@ -6639,7 +6638,7 @@ function Luna:CreateWindow(WindowSettings)
 		dragBar.Visible = false
 		Window.State = false
 		if UserInputService.KeyboardEnabled == false then
-			LunaUI.MobileSupport.Visible = true
+			ScriptXUI.MobileSupport.Visible = true
 		end
 	end)
 	Main.Controls.Close["MouseEnter"]:Connect(function()
@@ -6654,7 +6653,7 @@ function Luna:CreateWindow(WindowSettings)
 		if Window.State then return end
 		if input.KeyCode == Window.Bind then
 			Unhide(Main, Window.CurrentTab)
-			LunaUI.MobileSupport.Visible = false
+			ScriptXUI.MobileSupport.Visible = false
 			dragBar.Visible = true
 			Window.State = true
 		end
@@ -6701,17 +6700,17 @@ function Luna:CreateWindow(WindowSettings)
 	end)	
 
 
-	LunaUI.MobileSupport.Interact.MouseButton1Click:Connect(function()
+	ScriptXUI.MobileSupport.Interact.MouseButton1Click:Connect(function()
 		Unhide(Main, Window.CurrentTab)
 		dragBar.Visible = true
 		Window.State = true
-		LunaUI.MobileSupport.Visible = false
+		ScriptXUI.MobileSupport.Visible = false
 	end)
 
 	return Window
 end
 
-function Luna:Destroy()
+function ScriptX:Destroy()
 	Main.Visible = false
 	for _, Notification in ipairs(Notifications:GetChildren()) do
 		if Notification.ClassName == "Frame" then
@@ -6719,16 +6718,16 @@ function Luna:Destroy()
 			Notification:Destroy()
 		end
 	end
-	LunaUI:Destroy()
+	ScriptXUI:Destroy()
 end
 
 if isStudio then
-	local Window = Luna:CreateWindow({
-		Name = "Nebula Client - Luna Hub | Blade Ball",
+	local Window = ScriptX:CreateWindow({
+		Name = "Nebula Client - ScriptX Hub | Blade Ball",
 		Subtitle = "by Nebula Softworks",
 		LogoID = "123795201100198",
 		LoadingEnabled = true,
-		LoadingTitle = "Nebula Client (Luna Hub)",
+		LoadingTitle = "Nebula Client (ScriptX Hub)",
 		LoadingSubtitle = "Loading script for Blade Ball",
 		KeySystem = true,
 		KeySettings = {
@@ -6746,8 +6745,8 @@ if isStudio then
 		}
 	})
 	
-	--[[local Window = Luna:CreateWindow({
-		Name = "Luna Example Window",
+	--[[local Window = ScriptX:CreateWindow({
+		Name = "ScriptX Example Window",
 		Subtitle = "Test",
 		LogoID = "6031097225",
 		LoadingEnabled = true,
@@ -6755,7 +6754,7 @@ if isStudio then
 		LoadingSubtitle = "by Nebula Softworks",
 		KeySystem = true,
 		KeySettings = {
-			Title = "Luna Example Key",
+			Title = "ScriptX Example Key",
 			Subtitle = "Key System",
 			Note = "Please Enter Your Key To Use Example Hub",
 			FileName = "Key", -- the name of the key file. this will be saved in ur RootFolder. However, if you don't have one, it'll save in ur config folder instead
@@ -6764,11 +6763,11 @@ if isStudio then
 		}
 	})
 
-	Luna:Notification({ 
-		Title = "Welcome to Luna",
+	ScriptX:Notification({ 
+		Title = "Welcome to ScriptX",
 		Icon = "sparkle",
 		ImageSource = "Material",
-		Content = "Welcome to the ScriptX Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. Luna was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. Luna Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using Luna Today at " .. website
+		Content = "Welcome to the ScriptX Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. ScriptX was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. ScriptX Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using ScriptX Today at " .. website
 	})
 
 	local Tabs = {
@@ -6917,7 +6916,7 @@ if isStudio then
 	})
 	Tabs.Main2:CreateDropdown({
 		Name = "Dropdown - Players",
-		Description = "Luna's Dropdowns Has a built in Player Dropdown!",
+		Description = "ScriptX's Dropdowns Has a built in Player Dropdown!",
 		Options = {"u can put anything here, it wont be shown anyway"},
 		CurrentOption = {"same here, itll be the first option"},
 		MultipleOptions = false,
@@ -6936,14 +6935,14 @@ end
 
 -- THIS IS THE DEBUG DEMO, ONLY USED WHEN TESTING NEW ELEMENTS AND CODE
 --[[if isStudio then
-    window = Luna:CreateWindow({LoadingEnabled = false})
+    window = ScriptX:CreateWindow({LoadingEnabled = false})
     t1 = window:CreateTab()
     t2 = window:CreateTab({ Name = "Tab 2", Icon = "location_searching"})
-    Luna:Notification({ 
-        Title = "Welcome to Luna",
+    ScriptX:Notification({ 
+        Title = "Welcome to ScriptX",
         Icon = "sparkle",
         ImageSource = "Material",
-        Content = "Welcome to the ScriptX Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. Luna was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. Luna Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using Luna Today at " .. website
+        Content = "Welcome to the ScriptX Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. ScriptX was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. ScriptX Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using ScriptX Today at " .. website
     })
     t1:CreateSection()
     local btn = t1:CreateButton({Callback = "", Description = "This Is A Description"})
@@ -6955,7 +6954,7 @@ end
     end})
     t2:CreateLabel({Style = 3})
     t1:CreateParagraph({Text = "Single String"})
-    t1:CreateParagraph({Text = "Welcome to the ScriptX Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. Luna was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. Luna Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using Luna Today at " .. website})
+    t1:CreateParagraph({Text = "Welcome to the ScriptX Interface Suite. This Is an Amazing Quality Freemium UI Library For Roblox Exploiting Made By Nebula Softworks. ScriptX was Created in hopes of improving the standard of UI Library designs by being the golden standard for it. ScriptX Has Amazing Features like a key system, notification and perfection in aesthetics and design. So, What Are You Waiting For? Start Using ScriptX Today at " .. website})
     s = t2:CreateSlider({ Callback = function(v) print(v) end })	
     t1:CreateButton({ Callback = function()
         s:Set({Name = "new name", Callback = ""})
@@ -6979,4 +6978,4 @@ end
     t1:CreateDropdown({Callback = function(t) print(unpack(t)) end})
     t1:CreateDropdown({Description = "Special Type - Player", Callback = "", SpecialType = "Player"})
 end]]--
-return Luna
+return ScriptX
