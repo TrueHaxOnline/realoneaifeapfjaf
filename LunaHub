@@ -2222,12 +2222,12 @@ end
 function Luna:CreateWindow(WindowSettings)
 
 	WindowSettings = Kwargify({
-		Name = "ScriptX Loading",
+		Name = "Luna UI Example Window",
 		Subtitle = "",
 		LogoID = "6031097225",
 		LoadingEnabled = true,
-		LoadingTitle = "ScriptX",
-		LoadingSubtitle = "Loading",
+		LoadingTitle = "ScriptX Interface Suite",
+		LoadingSubtitle = "by Nebula Softworks",
 
 		ConfigSettings = {},
 
