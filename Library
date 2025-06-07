@@ -1710,8 +1710,8 @@ function ScriptXLib:MakeWindow(WindowConfig)
 	end  
 	
 	ScriptXLib:MakeNotification({
-		Name = "UI Library Upgrade",
-		Content = "New UI Library Available at sirius.menu/discord and sirius.menu/rayfield",
+		Name = "ScriptX Has Injected",
+		Content = "More information in https://discord.gg/rBs4um6bJ4",
 		Time = 5
 	})
 	
