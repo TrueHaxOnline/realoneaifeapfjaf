@@ -30,7 +30,7 @@ local ScriptXLib = {
 local Icons = {}
 
 local Success, Response = pcall(function()
-	Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/i need to put icons link here ")).icons
+	Icons = HttpService:JSONDecode(game:HttpGetAsync("https://raw.githubusercontent.com/TrueHaxOnline/realoneaifeapfjaf/refs/heads/main/Icons")).icons
 end)
 
 if not Success then
